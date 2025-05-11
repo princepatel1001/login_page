@@ -20,7 +20,8 @@
                 sessionStorage.setItem('currentUser', JSON.stringify({
                     phone: user.phone,
                     email: user.email,
-                    name: '${user.firstName} ${user.lastName'
+                    name: '${user.firstName} ${user.lastName}',
+                     enrollmentNo: user.enrollmentNo
                 }
                 ));
                 
@@ -36,14 +37,13 @@
 
         function validation(){
         var First_name=document.getElementById("First_name").value;
-        var middle_name=document.getElementById("middle_name").value;
         var last_name=document.getElementById("last_name").value;
         var phone_number=document.getElementById("phone_number").value;
         var email=document.getElementById("email").value;
         var password=document.getElementById("password").value;
         var confirm_password=document.getElementById("confirm_password").value;
 
-            if(First_name=="" || middle_name=="" || last_name=="" || phone_number=="" || email=="" || password=="" || confirm_password=="") 
+            if(First_name==""  || last_name=="" || phone_number=="" || email=="" || password=="" || confirm_password=="") 
         {
             alert("All fields are mendatory")
             return false;
@@ -78,7 +78,6 @@
         // Store user data in localStorage
   const userData = {
                     firstName: First_name,
-                    middleName: middle_name,
                     lastName: last_name,
                     phone: phone_number,
                     email: email,
@@ -120,10 +119,29 @@
         // Create HTML content
         const infoHTML = `
           <p><strong>Enrollment Number:</strong> ${user.enrollmentNo}</p>
-          <p><strong>Name:</strong> ${user.firstName} ${user.middleName} ${user.lastName}</p>
+          <p><strong>Name:</strong> ${user.firstName}  ${user.lastName}</p>
           <p><strong>Phone:</strong> ${user.phone}</p>
           <p><strong>Email:</strong> ${user.email}</p>
         `;
         document.getElementById('studentInfo').innerHTML = infoHTML;
       }
+
+      
     }
+
+
+
+
+const user = JSON.parse(sessionStorage.getItem('currentUser'));
+
+document.getElementById('profilePhone').innerText = `Phone: ${user.phone}`;
+document.getElementById('profileEnrol').innerText = `Enrollment: ${user.enrollmentNo}`;
+
+document.getElementById('profileBtn').addEventListener('click', () => {
+  document.getElementById('profileDropdown').classList.toggle('show');
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  sessionStorage.removeItem('currentUser');
+  location.reload();
+});
