@@ -3,37 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Student Dashboard</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #1b1b1b;
-      color: #333;
-    }
-
-    h2 {
-      color: #2c3e50;
-    }
-    h2{
-      color: #ddd;
-      margin-bottom:30px;
-    }
-    #studentInfo {
-      margin-top: 20px;
-      padding: 15px;
-      color: #f82121;
-      background-color: #faf7f7;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      max-width:500px ;
-    }
-  </style>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    <div id="topRightControls">
+    <div id="profileContainer">
+      <button id="profileBtn">Profile ▾</button>
+      <div id="profileDropdown" class="dropdown">
+        <p id="profilePhone"></p>
+        <p id="profileEnrol"></p>
+      </div>
+    </div>
+    <form action="login.html">
+    <button id="logoutBtn">Logout</button>
+    </form>
+  </div>
   <h2>Your Enrollment Number and information</h2>
-  <div id="studentInfo"><script src="script.js"></script></div>
+  <div id="studentInfo"></div>
 
+<script src="script.js"></script>
   
 </body>
 </html>
